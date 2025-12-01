@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - WebBuild Pro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">WebBuild Pro</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="estimate.html" class="btn-estimate">Get Estimate</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Client Reviews</h1>
+            <p>Trusted by hundreds of satisfied clients worldwide</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">4.9/5 Average Rating</h2>
+            <div class="testimonials-grid" id="reviewsGrid">
+                <!-- Reviews inserted by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Happy Clients</h2>
+            <p>Experience the difference of working with a dedicated team.</p>
+            <a href="estimate.html" class="btn btn-primary btn-large">Get Started</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WebBuild Pro</h3>
+                    <p>Crafting exceptional digital experiences through innovation and excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="estimate.html">Get Estimate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Custom Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>hello@webbuildpro.com</p>
+                    <p>+91 98765 43210</p>
+                    <p>Bangalore, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebBuild Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const reviews = [
+            { name: "Rahul Sharma", role: "Startup Founder", avatar: "RS", rating: 5, text: "Outstanding work with exceptional attention to detail. They transformed our vision into a product we're proud of." },
+            { name: "Priya Verma", role: "Product Manager", avatar: "PV", rating: 5, text: "Professional, communicative, and results-driven. Exceeded expectations on every front." },
+            { name: "Amit Kumar", role: "Business Director", avatar: "AK", rating: 5, text: "Exceptional technical expertise with creative problem-solving. Highly recommended!" },
+            { name: "Sarah Khan", role: "CEO", avatar: "SK", rating: 5, text: "Their innovative approach delivered remarkable results. Truly a game-changer for our business." },
+            { name: "David Chen", role: "Founder", avatar: "DC", rating: 5, text: "Great work and excellent communication throughout. Delivered exactly what we needed." },
+            { name: "Emma Wilson", role: "Marketing Lead", avatar: "EW", rating: 5, text: "Seamless collaboration and exceptional code quality. A pleasure to work with this team." }
+        ];
+
+        const grid = document.getElementById('reviewsGrid');
+        reviews.forEach((review) => {
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.innerHTML = `
+                <div class="stars">${'★'.repeat(review.rating)}</div>
+                <p class="testimonial-text">"${review.text}"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">${review.avatar}</div>
+                    <div class="testimonial-author-info">
+                        <h4>${review.name}</h4>
+                        <p>${review.role}</p>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

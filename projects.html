@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - WebBuild Pro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">WebBuild Pro</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="estimate.html" class="btn-estimate">Get Estimate</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Projects</h1>
+            <p>A collection of innovative solutions we've built for our clients</p>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="game">Games</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects inserted by JS -->
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's discuss how we can help bring your vision to life.</p>
+            <a href="estimate.html" class="btn btn-primary btn-large">Get Your Quote</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WebBuild Pro</h3>
+                    <p>Crafting exceptional digital experiences through innovation and excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="estimate.html">Get Estimate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Custom Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>hello@webbuildpro.com</p>
+                    <p>+91 98765 43210</p>
+                    <p>Bangalore, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebBuild Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const projects = [
+            {
+                title: "Spreadlink",
+                category: "mobile",
+                description: "Global social media platform with intuitive UI/UX and scalable infrastructure.",
+                tags: ["React Native", "Node.js", "Firebase"]
+            },
+            {
+                title: "Xtrio Platform",
+                category: "mobile",
+                description: "Web and mobile development acquiring 200K+ users in 30 days.",
+                tags: ["Android", "Web Dev", "SEO"]
+            },
+            {
+                title: "Fashion 360",
+                category: "ecommerce",
+                description: "E-commerce platform with optimized SEO and digital presence.",
+                tags: ["E-Commerce", "SEO", "Content"]
+            },
+            {
+                title: "Mobile Games",
+                category: "game",
+                description: "Collection of engaging games with innovative mechanics.",
+                tags: ["Game Dev", "Unity", "iOS/Android"]
+            },
+            {
+                title: "Website Portfolio",
+                category: "web",
+                description: "Collection of websites with intuitive design and engagement.",
+                tags: ["Web Design", "React", "Frontend"]
+            },
+            {
+                title: "3D Visualizations",
+                category: "web",
+                description: "Professional 3D models and advanced visualization solutions.",
+                tags: ["3D Modeling", "Blender", "Design"]
+            }
+        ];
+
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            projects.filter(p => filter === 'all' || p.category === filter).forEach((project) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <div class="project-image">${project.title}</div>
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProjects(btn.dataset.filter);
+            });
+        });
+
+        renderProjects();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
